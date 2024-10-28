@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nostr Login!</title>
+    <title>Nostr Login Example</title>
     <script src="https://www.unpkg.com/nostr-login@latest/dist/unpkg.js"></script>
 </head>
 <body>
-    <h1>Welcome to tigs' shitty lil website!</h1>
-    <button id="loginButton">Login with Nostr ONLY</button>
-    <div id="userProfile" style="display: none;">
-          // Redirect to another page
-                window.location.href = 'dashboard.html';
-    </div>
+    <h1>Welcome to tigs' site!</h1>
+    <button id="loginButton">Login with Nostr</button>
 
     <script>
         // Add click event to the login button
@@ -20,29 +16,13 @@
             if (window.nostr) {
                 // Get user's public key
                 const publicKey = await window.nostr.getPublicKey();
-
-              
                 
-                // Show user profile
-                document.getElementById('userProfile').style.display = 'block';
-                document.getElementById('userPublicKey').textContent = `Public Key: ${publicKey}`;
+                // Redirect to another page
+                window.location.href = 'dashboard.html';
                 
                 console.log(`Logged in with public key: ${publicKey}`);
             } else {
-                alert('Nostr extension not found! Please install a Nostr browser extension like nos2x(Chrome or Firefox), Nostore (iOS), Amber (Android).');
-            }
-        });
-
-        // Handle authentication events
-        document.addEventListener('nlAuth', (e) => {
-            if (e.detail.type === 'login' || e.detail.type === 'signup') {
-                // Update UI to show user profile
-                document.getElementById('userProfile').style.display = 'block';
-                document.getElementById('userPublicKey').textContent = `Public Key: ${e.detail.publicKey}`;
-            } else {
-                // Clear local user data and hide profile info
-                document.getElementById('userProfile').style.display = 'none';
-                document.getElementById('userPublicKey').textContent = '';
+                alert('Nostr extension not found! Please install a Nostr browser extension like nos2x(browser) or Nostore(iOS) or Amber(Android).');
             }
         });
     </script>
