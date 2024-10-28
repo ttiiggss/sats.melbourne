@@ -10,8 +10,8 @@
     <h1>Welcome to tigs' shitty lil website!</h1>
     <button id="loginButton">Login with Nostr ONLY</button>
     <div id="userProfile" style="display: none;">
-        <h2>User Profile</h2>
-        <p id="userPublicKey"></p>
+          // Redirect to another page
+                window.location.href = 'dashboard.html';
     </div>
 
     <script>
@@ -21,8 +21,7 @@
                 // Get user's public key
                 const publicKey = await window.nostr.getPublicKey();
 
-                // Redirect to another page
-                window.location.href = 'dashboard.html';
+              
                 
                 // Show user profile
                 document.getElementById('userProfile').style.display = 'block';
