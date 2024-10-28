@@ -20,6 +20,9 @@
             if (window.nostr) {
                 // Get user's public key
                 const publicKey = await window.nostr.getPublicKey();
+
+                // Redirect to another page
+                window.location.href = 'dashboard.html';
                 
                 // Show user profile
                 document.getElementById('userProfile').style.display = 'block';
